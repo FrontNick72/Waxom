@@ -1,0 +1,15 @@
+@mixin title-section() {
+	font-family: Arial;
+	color:  #445161;
+	font-size: 30px;
+	font-weight: 400;
+	line-height: 36px;
+}
+
+@mixin text-section() {
+	font-family: Arial;
+  color:  #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
