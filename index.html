@@ -21,17 +21,24 @@
         <span class="btn-menu-line""></span>
         <span class="btn-menu-line""></span>
       </a>
-			<div class="search">
-				<label class="search--button" for="searchCheck"></label>
-				<input id="searchCheck" type="checkbox">
-				<form class = "form">								
-					<input type="text" class="input-group" placeholder="Поиск по сайту">
-					<label class="button" for="searchCheck"></label>													
-				</form>
-			</div>
-			<a class="card"></a>
-			<nav class="nav">
-				<ul class="nav__list">
+      <nav class="nav">
+        <a class="btn_menu">
+          <span class="btn-menu-line"></span>
+          <span class="btn-menu-line""></span>
+          <span class="btn-menu-line""></span>
+        </a>
+        <ul class="nav__list">
+          <li class="nav__list-item search">
+    				<label class="search--button" for="searchCheck"></label>
+    				<input id="searchCheck" type="checkbox">
+    				<form class = "form">								
+    					<input type="text" class="input-group" placeholder="Поиск по сайту">
+    					<label class="button" for="searchCheck"></label>													
+    				</form>
+          </li>
+          <li class="nav__list-item card">
+    			 <a href="#" class="card__link"></a>	
+          </li>		
 					<li class="nav__list-item">
 						<a href="#" class="link">
 							Home
@@ -584,8 +591,6 @@
 		</div>			
 	</section>
 	<section class="video">
-		<div class="video-container">
-			<div class="filter"></div>
 	    <video autoplay loop class="fillWidth">
 	        <source src="video/Black_Keys.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
 	        <source src="video/Black_Keys.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
@@ -732,7 +737,7 @@
               Sep.
             </span>
           </div>
-          <div class="posts__photo posts__photo--slider">            
+          <div class="posts__photo posts__photo--slider">          
             <img src="img/ship.png" alt="computer">
             <img src="img/nogi.png" alt="computer">
             <img src="img/photo-mountain.png" alt="computer">
@@ -749,8 +754,7 @@
             Read More
           </a>
         </div>
-        <div class="posts__item">
-          <div class="background-hover"></div>
+        <div class="posts__item">          
           <div class="posts__date">
             30
             <span class="month">
@@ -758,6 +762,7 @@
             </span>
           </div>          
           <div class="posts__photo">
+            <div class="background-hover"></div>
             <img src="img/ship.png" alt="computer">
           </div>      
           <div class="title">
@@ -770,8 +775,7 @@
             Read More
           </a>
         </div>
-        <div class="posts__item">
-          <div class="background-hover"></div>
+        <div class="posts__item">          
           <div class="posts__date">
             30
             <span class="month">
@@ -779,6 +783,7 @@
             </span>
           </div>
           <div class="posts__photo">
+            <div class="background-hover"></div>
             <img src="img/ship.png" alt="computer">
           </div>  
           <div class="title">
@@ -812,8 +817,7 @@
             Read More
           </a>
         </div>
-        <div class="posts__item">
-          <div class="background-hover"></div>
+        <div class="posts__item">          
           <div class="posts__date">
             30
             <span class="month">
@@ -821,6 +825,7 @@
             </span>
           </div>          
           <div class="posts__photo">
+            <div class="background-hover"></div>
             <img src="img/ship.png" alt="computer">
           </div>      
           <div class="title">
@@ -838,10 +843,10 @@
   </section>
   <section class="logos">
     <div class="container flex">
-      <div class="logos__item logos__item--1"></div>
-      <div class="logos__item logos__item--2"></div>
-      <div class="logos__item logos__item--3"></div>
-      <div class="logos__item logos__item--4"></div>
+      <img src="img/logo-01.png" alt="logo-01" class="logos__item">
+      <img src="img/logo-02.png" alt="logo-02" class="logos__item">
+      <img src="img/logo-03.png" alt="logo-03" class="logos__item">
+      <img src="img/logo-04.png" alt="logo-04" class="logos__item">
     </div>
   </section>
   <footer class="footer">
@@ -969,7 +974,42 @@
         slidesToScroll: 3,
         centerPadding: '90px',
         prevArrow: '<div class = "posts__prev"></div>',
-        nextArrow: '<div class = "posts__next"></div>'
+        nextArrow: '<div class = "posts__next"></div>',
+        responsive: [
+          {
+            breakpoint: 980,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              centerPadding: '45px'
+            }
+          },
+          {
+            breakpoint: 610,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+
+      var touch = $('.btn_menu');
+      var menu = $('.nav');     
+      $(touch).on('click', function(e) {
+          e.preventDefault();
+          menu.slideToggle();
+
+      });
+
+      $(window).resize(function(){
+          var wid = $(window).width();
+          if(wid > 760 && menu.is(':hidden')) {
+              menu.removeAttr('style');
+          }
       });
     });
   </script>

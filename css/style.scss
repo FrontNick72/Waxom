@@ -81,26 +81,59 @@
 		}
 		.form {
   		position: absolute; 
-  		display: none; 
-  		right: -24px; 
-  		top: -8px;
-  	}
-  	#searchCheck:checked + form {
   		display: block;
+  		right: 0; 
+  		top: 0;
+  		z-index: 0;
+  		.button {
+  			position: absolute;
+  			z-index: 1;
+  			top: 0;
+  			right: 0;
+  			background: url(../img/icon/icon-search.png) no-repeat;
+		    background-position: 0 0;
+		    display: block;
+		    width: 24px;
+		    height: 24px;
+		    cursor: pointer;
+		    &:hover {
+		    	background-position: 0 -24px;
+		    }
+  		}
+  		.input-group {
+	    	background: #878787;
+	    	box-sizing: border-box;
+		    color: #fff;
+		    padding: 0;
+		    border: 0;
+		    border-radius: 10px;
+		    margin: -6px;
+		    width: 0;
+		    -webkit-transition: all 2s ease-out 0s;
+		    -moz-transition: all 2s ease-out 0s;
+		    -o-transition: all 2s ease-out 0s;
+		    transition: all 2s ease-out 0s;
+		  }
+  	}
+  	#searchCheck:checked + .form>.input-group {
+  		padding: 10px 35px;
+  		width: 150px; 
   	}
 	}
-	.card {
-		background: url(../img/icon/cart.png) no-repeat;
-		background-position: 0 0;
+	.card {		
 		cursor: pointer;
-		display: block;
-		text-decoration: none;
 		margin: 16px 14px;
-		float: right;
-		height: 24px;
-		width: 18px;
+		float: right;		
 		&:hover {
 			background-position: 0 -24px;
+		}
+		&__link {
+			background: url(../img/icon/cart.png) no-repeat;
+			background-position: 0 0;
+			display: block;
+			height: 24px;
+			text-decoration: none;
+			width: 18px;
 		}		
 	}
 
@@ -319,7 +352,7 @@
 				position: relative;
 				width: 370px;
 				.photo {
-					height: 237px;
+					height: 100%;
 					margin-bottom: -4px;
 					width: 100%;
 				}
@@ -379,8 +412,9 @@
 					position: absolute;
 					top: 0;
 					left: 0;
+					right: 0;
 					height: 237px;
-					width: 370px;
+					width: 100%;
 					.link {
 						background: url(../img/icon/hover.png);
 						background-position: 0 0;
@@ -416,39 +450,21 @@
 }
 
 .video {
+	background: #e8ebe8;
 	width: 100%;
 	height: 705px;
 	border-right: none;
   border-left: none;
   position: relative;
-  .video-container {
-    position: relative;
-    bottom: 0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #000;
-    video {
-	    position: absolute;
-	    z-index: 0;
-	    bottom: 0;
-		}
-		video.fillWidth {
-    	width: 100%;
-		}
-		.filter {
-	    z-index: 100;
-	    position: absolute;
-	    background: rgba(0, 0, 0, 0.4);
+  .fillWidth {
+    width: 100% !important;
+    height: 100% !important;
+	}
+	.poster {
+		img {
 	    width: 100%;
-		}
-		.poster {
-			img {
-		    width: 100%;
-		    bottom: 0;
-		    position: absolute;
-			}
+	    bottom: 0;
+	    position: absolute;
 		}
 	}
 }
@@ -613,13 +629,12 @@
 		right: 0;
 		bottom: 0;
 		opacity: 0.7;
-		height: 220px;
 		z-index: 1;
 		width: 100%;
 	}
 	&__photo {
-		height: 220px;
 		margin-bottom: 26px;
+		position: relative;
 		width: 100%;
 		img {
 			height: 100%;
@@ -693,38 +708,9 @@
 		align-items: center;
 	}
 	&__item {
-		width: 210px;
+		width: 17.797%;
 		&:hover {
 			cursor: pointer;
-		}
-	}
-
-	&__item--1 {
-		background: url(../img/logo-01.png);
-		height: 127px;
-		&:hover {
-			background-position: 0 -129px;
-		}
-	}
-	&__item--2 {
-		background: url(../img/logo-02.png);
-		height: 210px;
-		&:hover {
-			background-position: 0 -212px;
-		}
-	}
-	&__item--3 {
-		background: url(../img/logo-03.png);
-		height: 130px;
-		&:hover {
-			background-position: -4px -135px;
-		}
-	}
-	&__item--4 {
-		background: url(../img/logo-04.png);
-		height: 164px;
-		&:hover {
-			background-position: 0 -164px;
 		}
 	}
 }
@@ -776,10 +762,9 @@
 		}
 
 		.widget {
-			display: inline-block;			
-			height: 98px;
+			display: inline-block;
 			margin: 0 10px 10px 0; 
-			width: 130px;
+			width: 46.5%;
 			&__photo {
 				height: 100%;
 				width: 100%;
@@ -1021,11 +1006,11 @@
 	float: right;
 	cursor: pointer;
   margin: 5.5px 0;
-	width: 20px;
+	width: 64px;
 	.btn-menu-line{
 		background: #fff;
 	  height:9px; 
-	  width:65px; 
+	  width:100%; 
 	  margin: 0px 0 6px 0px;
 	  display:block;	  
 	  transition: all 0.3s ease-in-out;
@@ -1036,17 +1021,4 @@
 	}
 }
 
-@media screen AND (max-width: 1080px) {
-	.btn_menu {
-		display: block;
-	}
-	.nav {
-		display: none;
-	}
-	.search {
-		display: none;
-	}
-	.header .card {
-		display: none;
-	}
-}
+@import 'media.scss';
